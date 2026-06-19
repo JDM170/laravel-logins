@@ -1,8 +1,8 @@
 <?php
 
-namespace ALajusticia\Logins\Events;
+namespace JDM170\Logins\Events;
 
-use ALajusticia\Logins\RequestContext;
+use JDM170\Logins\RequestContext;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Queue\SerializesModels;
 

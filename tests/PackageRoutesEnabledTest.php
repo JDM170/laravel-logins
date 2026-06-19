@@ -1,8 +1,8 @@
 <?php
 
-namespace ALajusticia\Logins\Tests;
+namespace JDM170\Logins\Tests;
 
-use ALajusticia\Logins\Http\Controllers\LoginsController;
+use JDM170\Logins\Http\Controllers\LoginsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 

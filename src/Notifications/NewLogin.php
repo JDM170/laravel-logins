@@ -1,6 +1,6 @@
 <?php
 
-namespace ALajusticia\Logins\Notifications;
+namespace JDM170\Logins\Notifications;
 
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;

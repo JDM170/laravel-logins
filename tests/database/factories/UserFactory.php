@@ -1,8 +1,8 @@
 <?php
 
-namespace ALajusticia\Logins\Tests\Database\Factories;
+namespace JDM170\Logins\Tests\Database\Factories;
 
-use ALajusticia\Logins\Tests\User;
+use JDM170\Logins\Tests\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;

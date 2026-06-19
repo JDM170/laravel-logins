@@ -1,9 +1,9 @@
 <?php
 
-namespace ALajusticia\Logins\Traits;
+namespace JDM170\Logins\Traits;
 
-use ALajusticia\Logins\CurrentLogin;
-use ALajusticia\Logins\Models\Login;
+use JDM170\Logins\CurrentLogin;
+use JDM170\Logins\Models\Login;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Laravel\Sanctum\HasApiTokens;

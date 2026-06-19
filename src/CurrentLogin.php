@@ -1,8 +1,8 @@
 <?php
 
-namespace ALajusticia\Logins;
+namespace JDM170\Logins;
 
-use ALajusticia\Logins\Models\Login;
+use JDM170\Logins\Models\Login;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;

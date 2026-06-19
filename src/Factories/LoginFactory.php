@@ -1,9 +1,9 @@
 <?php
 
-namespace ALajusticia\Logins\Factories;
+namespace JDM170\Logins\Factories;
 
-use ALajusticia\Logins\Models\Login;
-use ALajusticia\Logins\RequestContext;
+use JDM170\Logins\Models\Login;
+use JDM170\Logins\RequestContext;
 use Carbon\Carbon;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Facades\Config;

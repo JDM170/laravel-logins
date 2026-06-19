@@ -1,6 +1,6 @@
 <?php
 
-use ALajusticia\Logins\Http\Controllers\LoginsController;
+use JDM170\Logins\Http\Controllers\LoginsController;
 use Illuminate\Support\Facades\Route;
 
 // These endpoints use Laravel's default `web` middleware on purpose, to simplify the installation of the UI components and benefit from the session guard.

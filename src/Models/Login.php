@@ -1,10 +1,10 @@
 <?php
 
-namespace ALajusticia\Logins\Models;
+namespace JDM170\Logins\Models;
 
 use ALajusticia\Expirable\Traits\Expirable;
-use ALajusticia\Logins\Scopes\LoginsScope;
-use ALajusticia\Logins\Traits\ManagesLogins;
+use JDM170\Logins\Scopes\LoginsScope;
+use JDM170\Logins\Traits\ManagesLogins;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;

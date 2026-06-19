@@ -1,6 +1,6 @@
 <?php
 
-namespace ALajusticia\Logins\Http\Resources;
+namespace JDM170\Logins\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;

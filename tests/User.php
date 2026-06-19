@@ -1,9 +1,9 @@
 <?php
 
-namespace ALajusticia\Logins\Tests;
+namespace JDM170\Logins\Tests;
 
-use ALajusticia\Logins\Tests\Database\Factories\UserFactory;
-use ALajusticia\Logins\Traits\HasLogins;
+use JDM170\Logins\Tests\Database\Factories\UserFactory;
+use JDM170\Logins\Traits\HasLogins;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;

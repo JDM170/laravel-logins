@@ -1,10 +1,10 @@
 <?php
 
-namespace ALajusticia\Logins\Tests;
+namespace JDM170\Logins\Tests;
 
 use ALajusticia\Expirable\ExpirableServiceProvider;
-use ALajusticia\Logins\Logins;
-use ALajusticia\Logins\LoginsServiceProvider;
+use JDM170\Logins\Logins;
+use JDM170\Logins\LoginsServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Laravel\Sanctum\SanctumServiceProvider;

@@ -52,19 +52,19 @@
     },
     "autoload": {
         "psr-4": {
-            "ALajusticia\\Logins\\": "src"
+            "JDM170\\Logins\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "ALajusticia\\Logins\\Tests\\": "tests",
-            "ALajusticia\\Logins\\Tests\\Database\\Factories\\": "tests/database/factories"
+            "JDM170\\Logins\\Tests\\": "tests",
+            "JDM170\\Logins\\Tests\\Database\\Factories\\": "tests/database/factories"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "ALajusticia\\Logins\\LoginsServiceProvider"
+                "JDM170\\Logins\\LoginsServiceProvider"
             ]
         }
     }

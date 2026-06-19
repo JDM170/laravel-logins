@@ -1,6 +1,6 @@
 <?php
 
-namespace ALajusticia\Logins;
+namespace JDM170\Logins;
 
 use Illuminate\Auth\EloquentUserProvider;
 use Illuminate\Contracts\Auth\Authenticatable as UserContract;

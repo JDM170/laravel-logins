@@ -1,6 +1,6 @@
 <?php
 
-namespace ALajusticia\Logins\Traits;
+namespace JDM170\Logins\Traits;
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Config;

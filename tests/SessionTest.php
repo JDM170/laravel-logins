@@ -1,6 +1,6 @@
 <?php
 
-namespace ALajusticia\Logins\Tests;
+namespace JDM170\Logins\Tests;
 
 use Illuminate\Support\Facades\Auth;
 

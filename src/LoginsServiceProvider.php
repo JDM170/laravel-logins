@@ -1,12 +1,12 @@
 <?php
 
-namespace ALajusticia\Logins;
+namespace JDM170\Logins;
 
-use ALajusticia\Logins\Commands\Install;
-use ALajusticia\Logins\Commands\Publish;
-use ALajusticia\Logins\Events\LoggedIn;
-use ALajusticia\Logins\Listeners\SanctumEventSubscriber;
-use ALajusticia\Logins\Listeners\SessionEventSubscriber;
+use JDM170\Logins\Commands\Install;
+use JDM170\Logins\Commands\Publish;
+use JDM170\Logins\Events\LoggedIn;
+use JDM170\Logins\Listeners\SanctumEventSubscriber;
+use JDM170\Logins\Listeners\SessionEventSubscriber;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Blade;

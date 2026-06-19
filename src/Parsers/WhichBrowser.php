@@ -1,8 +1,8 @@
 <?php
 
-namespace ALajusticia\Logins\Parsers;
+namespace JDM170\Logins\Parsers;
 
-use ALajusticia\Logins\Contracts\UserAgentParser;
+use JDM170\Logins\Contracts\UserAgentParser;
 use Illuminate\Support\Facades\Request;
 use WhichBrowser\Parser;
 

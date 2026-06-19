@@ -1,8 +1,8 @@
 <?php
 
-namespace ALajusticia\Logins\Http\Controllers;
+namespace JDM170\Logins\Http\Controllers;
 
-use ALajusticia\Logins\Http\Resources\LoginResource;
+use JDM170\Logins\Http\Resources\LoginResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Routing\Controller;

@@ -3,7 +3,7 @@
 return [
 
     // Configuration file for Laravel Logins package
-    // https://github.com/alajusticia/laravel-logins
+    // https://github.com/JDM170/laravel-logins
 
     /*
     |--------------------------------------------------------------------------
@@ -117,7 +117,7 @@ return [
     | use your own logic/listener, set the value to false.
     |
     */
-    'new_login_notification' => \ALajusticia\Logins\Notifications\NewLogin::class,
+    'new_login_notification' => \JDM170\Logins\Notifications\NewLogin::class,
 
     /*
     |--------------------------------------------------------------------------

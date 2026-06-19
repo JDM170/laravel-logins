@@ -1,12 +1,12 @@
 <?php
 
-namespace ALajusticia\Logins\Listeners;
+namespace JDM170\Logins\Listeners;
 
-use ALajusticia\Logins\CurrentLogin;
-use ALajusticia\Logins\Events\LoggedIn;
-use ALajusticia\Logins\Factories\LoginFactory;
-use ALajusticia\Logins\Logins;
-use ALajusticia\Logins\RequestContext;
+use JDM170\Logins\CurrentLogin;
+use JDM170\Logins\Events\LoggedIn;
+use JDM170\Logins\Factories\LoginFactory;
+use JDM170\Logins\Logins;
+use JDM170\Logins\RequestContext;
 use Illuminate\Events\Dispatcher;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Str;

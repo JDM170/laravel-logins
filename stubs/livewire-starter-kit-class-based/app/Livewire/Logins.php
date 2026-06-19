@@ -22,7 +22,7 @@ class Logins extends Component
     /**
      * Get the authenticated user's tracked logins.
      *
-     * @return Collection<int, \ALajusticia\Logins\Models\Login>
+     * @return Collection<int, \JDM170\Logins\Models\Login>
      */
     #[Computed]
     public function logins(): Collection

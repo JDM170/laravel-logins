@@ -1,8 +1,8 @@
 <?php
 
-namespace ALajusticia\Logins\Commands;
+namespace JDM170\Logins\Commands;
 
-use ALajusticia\Logins\Helpers;
+use JDM170\Logins\Helpers;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Config;
 use function Laravel\Prompts\confirm;
@@ -38,11 +38,11 @@ class Install extends Command
         $this->line('Installing...' . "\n");
 
         $migrationPaths = [
-            'vendor/alajusticia/laravel-logins/database/migrations',
+            'vendor/jdm170/laravel-logins/database/migrations',
         ];
 
         if (Helpers::sanctumIsInstalled()) {
-            $migrationPaths[] = 'vendor/alajusticia/laravel-logins/database/migrations/sanctum';
+            $migrationPaths[] = 'vendor/jdm170/laravel-logins/database/migrations/sanctum';
         }
 
         $options = [

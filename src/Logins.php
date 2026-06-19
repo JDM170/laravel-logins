@@ -1,10 +1,10 @@
 <?php
 
-namespace ALajusticia\Logins;
+namespace JDM170\Logins;
 
-use ALajusticia\Logins\Events\LoggedIn;
-use ALajusticia\Logins\Factories\LoginFactory;
-use ALajusticia\Logins\Models\Login;
+use JDM170\Logins\Events\LoggedIn;
+use JDM170\Logins\Factories\LoginFactory;
+use JDM170\Logins\Models\Login;
 use Illuminate\Auth\Recaller;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Facades\App;
@@ -69,7 +69,7 @@ class Logins
      */
     public static function tracked(Authenticatable $model): bool
     {
-        return in_array('ALajusticia\Logins\Traits\HasLogins', class_uses_recursive($model))
+        return in_array('JDM170\Logins\Traits\HasLogins', class_uses_recursive($model))
                && $model->trackLogins;
     }
 

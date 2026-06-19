@@ -1,8 +1,8 @@
 <?php
 
-namespace ALajusticia\Logins\Listeners;
+namespace JDM170\Logins\Listeners;
 
-use ALajusticia\Logins\Logins;
+use JDM170\Logins\Logins;
 use Illuminate\Events\Dispatcher;
 use Illuminate\Support\Facades\Auth;
 

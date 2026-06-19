@@ -1,6 +1,6 @@
 <?php
 
-namespace ALajusticia\Logins\Commands;
+namespace JDM170\Logins\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;

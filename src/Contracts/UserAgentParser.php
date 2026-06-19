@@ -1,6 +1,6 @@
 <?php
 
-namespace ALajusticia\Logins\Contracts;
+namespace JDM170\Logins\Contracts;
 
 interface UserAgentParser
 {

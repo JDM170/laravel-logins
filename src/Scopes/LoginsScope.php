@@ -1,8 +1,8 @@
 <?php
 
-namespace ALajusticia\Logins\Scopes;
+namespace JDM170\Logins\Scopes;
 
-use ALajusticia\Logins\Traits\ManagesLogins;
+use JDM170\Logins\Traits\ManagesLogins;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Scope;

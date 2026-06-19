@@ -1,9 +1,9 @@
 <?php
 
-namespace ALajusticia\Logins\Factories;
+namespace JDM170\Logins\Factories;
 
-use ALajusticia\Logins\Parsers\Agent;
-use ALajusticia\Logins\Parsers\WhichBrowser;
+use JDM170\Logins\Parsers\Agent;
+use JDM170\Logins\Parsers\WhichBrowser;
 
 class ParserFactory
 {
