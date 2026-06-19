@@ -20,6 +20,17 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Table name
+    |--------------------------------------------------------------------------
+    |
+    | This is the name of the table that will be created by the migration and
+    | used by the package.
+    |
+    */
+    'table_name' => 'logins',
+
+    /*
+    |--------------------------------------------------------------------------
     | Sanctum token tracking
     |--------------------------------------------------------------------------
     |
@@ -60,7 +71,6 @@ return [
     | 'whichbrowser' (see https://github.com/WhichBrowser/Parser-PHP)
     |
     */
-
     'parser' => 'whichbrowser',
 
     /*
@@ -74,7 +84,6 @@ return [
     | Refer to its documentation to configure a driver.
     |
     */
-
     'ip_geolocation' => [
 
         /*
@@ -88,7 +97,6 @@ return [
         | Leave it empty to totally disable the geolocation.
         |
         */
-
         'environments' => [
             // 'production',
         ],
@@ -109,7 +117,6 @@ return [
     | use your own logic/listener, set the value to false.
     |
     */
-
     'new_login_notification' => \ALajusticia\Logins\Notifications\NewLogin::class,
 
     /*
@@ -123,6 +130,5 @@ return [
     | notifications.
     |
     */
-
     'security_page_route' => null,
 ];

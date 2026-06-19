@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Facades\Config;
 use Laravel\Sanctum\PersonalAccessToken;
 use Laravel\Sanctum\Sanctum;
 
@@ -21,8 +20,6 @@ class Login extends Model
     use SoftDeletes;
 
     const EXPIRES_AT = 'expires_at';
-
-    protected $table = 'logins';
 
     /**
      * The attributes that aren't mass assignable.
@@ -67,6 +64,15 @@ class Login extends Model
         'location' => 'array',
     ];
 
+    public function __construct(array $attributes = [])
+    {
+        if (! isset($this->table)) {
+            $this->setTable(config('logins.table_name'));
+        }
+
+        parent::__construct($attributes);
+    }
+
     /**
      * Get the current connection name for the model.
      *
@@ -74,7 +80,7 @@ class Login extends Model
      */
     public function getConnectionName()
     {
-        return Config::get('logins.database_connection');
+        return config('logins.database_connection');
     }
 
     /**

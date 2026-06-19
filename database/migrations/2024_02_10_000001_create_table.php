@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('logins', function (Blueprint $table) {
+        Schema::create(config('logins.table_name'), function (Blueprint $table) {
             $table->id();
             $table->morphs('authenticatable');
             $table->string('user_agent')->nullable();
@@ -36,6 +36,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('logins');
+        Schema::dropIfExists(config('logins.table_name'));
     }
 };
