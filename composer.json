@@ -1,5 +1,5 @@
 {
-    "name": "alajusticia/laravel-logins",
+    "name": "jdm170/laravel-logins",
     "description": "Session management in Laravel apps, user notifications on new access, support for multiple separate remember tokens, IP geolocation, User-Agent parser",
     "keywords": [
         "laravel",
@@ -18,6 +18,10 @@
             "name": "Anthony Lajusticia",
             "email": "anthonylajusticia@gmail.com",
             "homepage": "https://anthonylajusticia.com"
+        },
+        {
+            "name": "Lev Rusanov",
+            "email": "30170278+JDM170@users.noreply.github.com"
         }
     ],
     "require": {
