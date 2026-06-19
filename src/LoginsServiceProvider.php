@@ -104,7 +104,6 @@ class LoginsServiceProvider extends ServiceProvider
                 $app['session.store'],
                 rehashOnLogin: $app['config']->get('hashing.rehash_on_login', true),
                 timeboxDuration: $app['config']->get('auth.timebox_duration', 200000),
-                hashKey: $app['config']->get('app.key'),
             );
 
             $guard->setCookieJar($app['cookie']);
