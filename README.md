@@ -7,7 +7,7 @@
 - Sign out a device without affecting other remembered devices (each remembered session has its own token)
 - Optionally track Sanctum tokens, which is useful when authenticating mobile apps, for example
 
-![Screenshot of the email notification upon new login](https://raw.githubusercontent.com/alajusticia/laravel-logins/main/images/laravel-logins-notification-email.png "Email notification upon new login")
+![Screenshot of the email notification upon new login](images/laravel-logins-notification-email.png "Email notification upon new login")
 
 _____
 
@@ -52,10 +52,21 @@ _____
 
 ## Installation
 
+Add repository link in `composer.json`:
+
+```json
+"repositories": [
+    {
+        "type": "vcs",
+        "url": "https://github.com/JDM170/laravel-logins"
+    }
+],
+```
+
 Install the package with composer:
 
 ```bash
-composer require alajusticia/laravel-logins
+composer require jdm170/laravel-logins
 ```
 
 Publish the configuration file (`logins.php`) with:
@@ -72,11 +83,11 @@ php artisan logins:install
 
 ### Prepare your authenticatable models
 
-In order to track the logins of your app's users, add the `ALajusticia\Logins\Traits\HasLogins` trait
+In order to track the logins of your app's users, add the `JDM170\Logins\Traits\HasLogins` trait
 in your authenticatable models that you want to track:
 
 ```php
-use ALajusticia\Logins\Traits\HasLogins;
+use JDM170\Logins\Traits\HasLogins;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 // ...
 
@@ -101,7 +112,7 @@ which one you want to use.
 
 ### Configure the authentication guard
 
-This package comes with a custom authentication guard (`ALajusticia\Logins\LoginsSessionGuard`) that extends the default
+This package comes with a custom authentication guard (`JDM170\Logins\LoginsSessionGuard`) that extends the default
 Laravel session guard, adding the logic to delete related logins in the `logout()`, `logoutCurrentDevice()` and
 `logoutOtherDevices()` methods.
 
@@ -113,7 +124,6 @@ In the `guards` options of your `auth.php` configuration file, use the `logins` 
         'driver' => 'logins',
         'provider' => 'users',
     ],
-    
     // ...
 ],
 ```
@@ -135,7 +145,6 @@ In your `auth.php` configuration file, use the `logins` driver in the user provi
         'driver' => 'logins',
         'model' => env('AUTH_MODEL', User::class),
     ],
-    
     // ...
 ],
 ```
@@ -212,7 +221,7 @@ resources/js/components/Logins.vue
 2. Register the built-in routes in the `boot` method of a service provider (for example in `app/Providers/AppServiceProvider.php`):
 
 ```php
-use ALajusticia\Logins\Logins;
+use JDM170\Logins\Logins;
 
 public function boot(): void
 {
@@ -310,7 +319,7 @@ Feel free to modify the component to suit your needs.
 
 ## Usage
 
-The `ALajusticia\Logins\Traits\HasLogins` trait provides your authenticatable models with methods to retrieve and manage
+The `JDM170\Logins\Traits\HasLogins` trait provides your authenticatable models with methods to retrieve and manage
 the user's logins.
 
 Everytime a new successful login occurs or a Sanctum token is created, information about the request will automatically
@@ -395,12 +404,12 @@ return $_SERVER['HTTP_CF_CONNECTING_IP'] ?? request()->ip();
 ```
 
 You can define your own IP address resolution logic, by passing a closure to the `getIpAddressUsing()` static method of
-the `ALajusticia\Logins\Logins` class, and returning the resolved IP address.
+the `JDM170\Logins\Logins` class, and returning the resolved IP address.
 
 Call it in the `boot()` method of a service provider, for example in your `App\Providers\AppServiceProvider`:
 
 ```php
-\ALajusticia\Logins\Logins::getIpAddressUsing(function () {
+\JDM170\Logins\Logins::getIpAddressUsing(function () {
     return request()->ip();
 });
 ```
@@ -409,13 +418,13 @@ Call it in the `boot()` method of a service provider, for example in your `App\P
 
 ### LoggedIn
 
-On a new login, you can listen to the `ALajusticia\Logins\Events\LoggedIn` event.
+On a new login, you can listen to the `JDM170\Logins\Events\LoggedIn` event.
 
-It receives the authenticated model (in `$authenticatable` property) and the `ALajusticia\Logins\RequestContext` object
+It receives the authenticated model (in `$authenticatable` property) and the `JDM170\Logins\RequestContext` object
 (in `$context` property) containing all the information collected about the request:
 
 ```php
-use ALajusticia\Logins\Events\LoggedIn;
+use JDM170\Logins\Events\LoggedIn;
 use Illuminate\Support\Facades\Event;
 
 Event::listen(function (LoggedIn $event) {
@@ -441,7 +450,7 @@ Event::listen(function (LoggedIn $event) {
 If you want to send a notification to your users when new access to their account occurs, pass a notification class
 to the `new_login_notification` option in the `logins.php` configuration file.
 
-Laravel Logins comes with a ready-to-use notification (`ALajusticia\Logins\Notifications\NewLogin`),
+Laravel Logins comes with a ready-to-use notification (`JDM170\Logins\Notifications\NewLogin`),
 or you can use your own.
 
 ### Temporarily disable notifications
@@ -470,12 +479,12 @@ php artisan vendor:publish --tag="logins-lang"
 This packages uses [Laravel Expirable](https://github.com/alajusticia/laravel-expirable) to make the Login model
 expirable.
 
-To purge expired logins, you can add the `ALajusticia\Logins\Models\Login` class to the `purge` array of the
+To purge expired logins, you can add the `JDM170\Logins\Models\Login` class to the `purge` array of the
 `expirable.php` configuration file:
 
 ```php
     'purge' => [
-        \ALajusticia\Logins\Models\Login::class,
+        \JDM170\Logins\Models\Login::class,
     ],
 ```
 
