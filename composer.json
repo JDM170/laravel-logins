@@ -50,6 +50,9 @@
         "livewire/livewire": "^3.4|^4.2",
         "laravel/fortify": "^1.21"
     },
+    "suggest": {
+        "ext-mbstring": "You must enable the PHP mbstring extension. If the extension is not available, you must install symfony/polyfill-mbstring."
+    },
     "autoload": {
         "psr-4": {
             "JDM170\\Logins\\": "src"

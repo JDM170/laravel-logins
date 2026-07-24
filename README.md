@@ -18,6 +18,7 @@ _____
   * [Configure the authentication guard](#configure-the-authentication-guard)
   * [Configure the user provider](#configure-the-user-provider)
   * [Laravel Sanctum](#laravel-sanctum)
+* [Throttling activity updates](#throttling-activity-updates)
 * [UI components](#ui-components)
   * [Vue Starter Kit](#vue-starter-kit)
   * [Livewire Starter Kit](#livewire-starter-kit)
@@ -38,6 +39,7 @@ _____
   * [Temporarily disable notifications](#temporarily-disable-notifications)
 * [Translations](#translations)
 * [Purge expired logins](#purge-expired-logins)
+* [Stored User-Agent length](#stored-user-agent-length)
 * [GDPR and Privacy Considerations](#gdpr-and-privacy-considerations)
 * [License](#license)
 
@@ -80,6 +82,9 @@ Run the `logins:install` command to run the required database migrations:
 ```bash
 php artisan logins:install
 ```
+
+When upgrading an existing application, run your migrations so package schema changes are applied.
+For example, recent versions widen the `logins.user_agent` column to `TEXT`.
 
 ### Prepare your authenticatable models
 
@@ -172,6 +177,33 @@ configuration file, and only the tokens whose name matches the defined pattern w
 ```php
 'sanctum_token_name_regex' => '/^mobile_app_/',
 ```
+
+## Throttling activity updates
+
+Whenever a login is tracked (session or Sanctum token), the `last_activity_at` column of the `logins` table is
+refreshed on every authenticated request. On high-traffic apps this causes many database writes just to update
+the last-activity timestamp.
+
+You can throttle these updates to reduce database writes significantly. It is optional and enabled in the
+configuration file:
+
+```php
+// config/logins.php
+'activity_update' => [
+    'interval' => 300,
+    'cache_store' => null,
+],
+```
+
+- `interval`: the minimum number of seconds between two updates for the same login. `0` (the default) keeps the
+  original behavior and updates on every request. A value like `300` updates `last_activity_at` at most once
+  every 300 seconds per login.
+- `cache_store`: the cache store used for throttling. `null` uses your default store. Point it at a shared store
+  (Redis, Memcached, database) so the throttle holds across all your workers and servers; a per-process store
+  like `array` or `file` will not throttle reliably.
+
+With throttling enabled, `last_activity_at` stays accurate to within `interval` seconds, which is usually enough
+for most use cases.
 
 ## UI components
 
@@ -322,11 +354,14 @@ Feel free to modify the component to suit your needs.
 The `JDM170\Logins\Traits\HasLogins` trait provides your authenticatable models with methods to retrieve and manage
 the user's logins.
 
-Everytime a new successful login occurs or a Sanctum token is created, information about the request will automatically
+Every time a new successful login occurs or a Sanctum token is created, information about the request will automatically
 be saved in the database in the `logins` table.
 
-Also, if a notification class is defined in the `logins.php` configuration file, a notification will be sent to your
-user with the information.
+Tracking writes are best-effort: if the login record cannot be saved, the authentication request or token creation will
+still complete.
+
+When a login is tracked successfully, and if a notification class is defined in the `logins.php` configuration file, a
+notification will be sent to your user with the information.
 
 ### Retrieving the logins
 
@@ -487,6 +522,19 @@ To purge expired logins, you can add the `JDM170\Logins\Models\Login` class to t
         \JDM170\Logins\Models\Login::class,
     ],
 ```
+
+## Stored User-Agent length
+
+Laravel Logins stores the raw User-Agent header in the `logins.user_agent` column.
+The column is `TEXT`, but the stored value is capped to `1024` bytes by default to keep audit data bounded.
+
+You can customize the max length in the `logins.php` configuration file:
+
+```php
+'user_agent_max_length' => 1024,
+```
+
+Set this option to `null` if you want to store the full User-Agent header.
 
 ## GDPR and Privacy Considerations
 
