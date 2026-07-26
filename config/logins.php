@@ -31,6 +31,20 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Session/login lifetime (in days)
+    |--------------------------------------------------------------------------
+    | 
+    | This value will be added to the current date to generate
+    | the expires_at attribute when creating a new record.
+    | Set to `null` to make the session permanent.
+    | If the value is not a number or is less than zero,
+    | the value 7 will be used.
+    | 
+    */
+    'expiration_interval' => 30,
+
+    /*
+    |--------------------------------------------------------------------------
     | Sanctum token tracking
     |--------------------------------------------------------------------------
     |
@@ -42,7 +56,6 @@ return [
     |
     */
     'sanctum_token_tracking' => false,
-
 
     /*
     |--------------------------------------------------------------------------

@@ -89,6 +89,10 @@ class Login extends Model
     protected static function booted(): void
     {
         static::addGlobalScope(new LoginsScope);
+
+        static::creating(function ($login) {
+            $login->expires_at = $login->defaultExpiresAt();
+        });
     }
 
     /**
@@ -178,5 +182,25 @@ class Login extends Model
         }
 
         return false;
+    }
+
+    /**
+     * Get the default value for `expires_at`.
+     * 
+     * @return \Illuminate\Support\Carbon|null
+     */
+    protected function defaultExpiresAt(): ?Carbon
+    {
+        $days = config('logins.expiration_interval');
+
+        if ($days === null) {
+            return null;
+        }
+
+        if (!is_numeric($days) || $days < 0) {
+            return Carbon::now()->addDays(7);
+        }
+
+        return Carbon::now()->addDays($days);
     }
 }
