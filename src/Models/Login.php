@@ -92,7 +92,7 @@ class Login extends Model
         static::addGlobalScope(new LoginsScope);
 
         static::creating(function ($login) {
-            $login->expires_at = $login->defaultExpiresAt();
+            $login->expires_at = $login->remember_token ? $login->rememberExpiresAt() : Carbon::now()->addDays(1);
         });
     }
 
@@ -190,7 +190,7 @@ class Login extends Model
      * 
      * @return \Illuminate\Support\Carbon|null
      */
-    protected function defaultExpiresAt(): ?Carbon
+    protected function rememberExpiresAt(): ?Carbon
     {
         $days = config('logins.expiration_interval');
 
