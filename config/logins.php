@@ -166,7 +166,7 @@ return [
     |     Requires a shared cache store (Redis, memcached, database).
     */
     'activity_update' => [
-        'interval'    => 0,     // seconds; 0 = every request (original behavior)
-        'cache_store' => null,  // null = default store; set a shared store (e.g. 'redis') so the throttle holds across workers
+        'interval' => 0,       // seconds; 0 = every request (original behavior)
+        'cache_store' => null, // null = default store; set a shared store (e.g. 'redis') so the throttle holds across workers
     ],
 ];
