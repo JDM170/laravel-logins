@@ -29,6 +29,8 @@ class Logins
 
     /**
      * Register a callback that is responsible for retrieving the client's IP address.
+     *
+     * @param callable(): ?string $callback
      */
     public static function getIpAddressUsing(callable $callback): void
     {
@@ -54,15 +56,13 @@ class Logins
     /**
      * Get the client's IP address.
      */
-    public static function ipAddress(): string
+    public static function ipAddress(): ?string
     {
-        if (static::$getIpAddressUsingCallback) {
+        if (static::$getIpAddressUsingCallback !== null) {
             return call_user_func(static::$getIpAddressUsingCallback);
-        } else {
-            // Support Cloudflare proxy by checking if HTTP_CF_CONNECTING_IP header exists
-            // Fallback to built-in Laravel ip() method on Request
-            return $_SERVER['HTTP_CF_CONNECTING_IP'] ?? Request::ip();
         }
+
+        return request()->ip();
     }
 
     /**
