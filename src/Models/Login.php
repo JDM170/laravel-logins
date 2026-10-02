@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Lang;
 use Laravel\Sanctum\PersonalAccessToken;
 use Laravel\Sanctum\Sanctum;
@@ -70,7 +71,7 @@ class Login extends Model
     public function __construct(array $attributes = [])
     {
         if (! isset($this->table)) {
-            $this->setTable(config('logins.table_name'));
+            $this->setTable(Config::get('logins.table_name'));
         }
 
         parent::__construct($attributes);
@@ -83,7 +84,7 @@ class Login extends Model
      */
     public function getConnectionName()
     {
-        return config('logins.database_connection');
+        return Config::get('logins.database_connection');
     }
 
     /**
@@ -216,7 +217,7 @@ class Login extends Model
      */
     protected function rememberExpiresAt(): ?Carbon
     {
-        $days = config('logins.expiration_interval');
+        $days = Config::get('logins.expiration_interval');
 
         if ($days === null) {
             return null;

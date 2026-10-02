@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -11,7 +12,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create(config('logins.table_name'), function (Blueprint $table) {
+        Schema::create(Config::get('logins.table_name'), function (Blueprint $table) {
             $table->id();
             $table->morphs('authenticatable');
             $table->text('user_agent')->nullable();
@@ -36,6 +37,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists(config('logins.table_name'));
+        Schema::dropIfExists(Config::get('logins.table_name'));
     }
 };
