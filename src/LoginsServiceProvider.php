@@ -7,7 +7,9 @@ use JDM170\Logins\Commands\Publish;
 use JDM170\Logins\Events\LoggedIn;
 use JDM170\Logins\Listeners\SanctumEventSubscriber;
 use JDM170\Logins\Listeners\SessionEventSubscriber;
+use JDM170\Logins\Support\SanctumForeignKey;
 use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Database\Events\MigrationsEnded;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Config;
@@ -51,6 +53,19 @@ class LoginsServiceProvider extends ServiceProvider
         // Load migrations
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
+        // The foreign key deleting the login of a Sanctum token with the token, so it runs with
+        // `php artisan migrate` like the other migrations, not only through `logins:install`
+        if (Helpers::sanctumIsInstalled()) {
+            $this->loadMigrationsFrom(__DIR__.'/../database/migrations/sanctum');
+
+            // The application may create the tokens table after the package's migration ran
+            Event::listen(function (MigrationsEnded $event) {
+                if ($event->method === 'up') {
+                    SanctumForeignKey::ensure();
+                }
+            });
+        }
+
         // Configure our authentication guard
         $this->configureGuard();
 
@@ -66,7 +81,7 @@ class LoginsServiceProvider extends ServiceProvider
         }
         if ($notificationClass = Config::get('logins.new_login_notification')) {
             Event::listen(function (LoggedIn $event) use ($notificationClass) {
-                if ($event->authenticatable->notifyLogins) {
+                if (Logins::notificationsEnabled() && $event->authenticatable->notifyLogins) {
                     $event->authenticatable->notify(new $notificationClass($event->context->toArray()));
                 }
             });
